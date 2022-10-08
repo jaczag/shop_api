@@ -4,7 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Enums\UserRoleEnum;
-use Carbon\Carbon;
+use App\Traits\DateTimeCast;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -27,6 +27,7 @@ class User extends Authenticatable
     use HasFactory;
     use Notifiable;
     use SoftDeletes;
+    use DateTimeCast;
 
     /**
      * @var array<int, string>
@@ -60,14 +61,5 @@ class User extends Authenticatable
     {
         parent::boot();
         static::creating(fn(User $user) => $user->password = Hash::make($user->password));
-    }
-
-    /**
-     * @param Carbon|null $date
-     * @return string|null
-     */
-    public function castDate(?Carbon $date): ?string
-    {
-        return $date?->toDateTimeString();
     }
 }
