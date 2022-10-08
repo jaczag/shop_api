@@ -14,8 +14,8 @@ class GetLangMiddleware
      * Handle an incoming request.
      *
      * @param Request $request
-     * @param Closure(Request): (Response|RedirectResponse) $next
-     * @return Response|RedirectResponse
+     * @param Closure $next
+     * @return Request
      */
     public function handle(Request $request, Closure $next)
     {

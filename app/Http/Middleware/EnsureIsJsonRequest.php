@@ -12,16 +12,16 @@ use Symfony\Component\HttpKernel\Exception\PreconditionFailedHttpException;
 class EnsureIsJsonRequest
 {
     /**
-     * Handle an incoming request.
-     *
      * @param Request $request
-     * @param Closure(Request): (Response|RedirectResponse) $next
-     * @return Response|RedirectResponse
+     * @param Closure $next
+     * @return mixed
      */
-    public function handle(Request $request, Closure $next): Response|RedirectResponse
+    public function handle(Request $request, Closure $next): mixed
     {
-        if(!$request->expectsJson() ) {
-            throw new PreconditionFailedHttpException();
+        if (!$request->expectsJson()) {
+            throw new PreconditionFailedHttpException(
+                __('exceptions.Missing header option', ['headerOption' => 'Accept: application/json'])
+            );
         }
         return $next($request);
     }

@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use App\Traits\ApiResponse;
+use BadMethodCallException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -62,7 +63,7 @@ class Handler extends ExceptionHandler
         if ($e instanceof ModelNotFoundException) {
             $model = strtolower(class_basename($e->getModel()));
             return $this->errorResponse(
-                "Does not exist any instance of {$model} with the given id",
+                "Does not exist any instance of $model with the given id",
                 ResponseAlias::HTTP_NOT_FOUND
             );
         }
@@ -105,7 +106,7 @@ class Handler extends ExceptionHandler
 
         if ($e instanceof PreconditionFailedHttpException) {
             return $this->errorResponse(
-                __('messages.Invalid or missing header parameter'),
+                $e->getMessage(),
                 ResponseAlias::HTTP_PRECONDITION_FAILED
             );
         }
@@ -114,6 +115,12 @@ class Handler extends ExceptionHandler
             return $this->errorResponse(
                 __('messages.This method is not supported for the route'),
                 ResponseAlias::HTTP_PRECONDITION_FAILED
+            );
+        }
+
+        if ($e instanceof BadMethodCallException) {
+            return $this->errorResponse(
+                $e->getMessage()
             );
         }
 

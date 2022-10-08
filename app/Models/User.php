@@ -3,21 +3,30 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Enums\UserRoleEnum;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * @property int $id
+ * @property string $password
+ * @property string $name
+ * @property string $email
+ * @property UserRoleEnum|string $role
+ * @property mixed $created_at
+ * @property mixed $updated_at
+ */
 class User extends Authenticatable
 {
     use HasApiTokens;
     use HasFactory;
     use Notifiable;
     use SoftDeletes;
-
-    const ROLE_ADMIN = 'admin';
-    const ROLE_USER = 'user';
 
     /**
      * @var array<int, string>
@@ -43,4 +52,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * @return void
+     */
+    public static function boot(): void
+    {
+        parent::boot();
+        static::creating(fn(User $user) => $user->password = Hash::make($user->password));
+    }
+
+    /**
+     * @param Carbon|null $date
+     * @return string|null
+     */
+    public function castDate(?Carbon $date): ?string
+    {
+        return $date?->toDateTimeString();
+    }
 }

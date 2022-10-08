@@ -1,7 +1,7 @@
 <?php
 
 return [
-  "Account created successfully" => "Konto zostało utworzone",
+    "Account created successfully" => "Konto zostało utworzone",
     'Invalid or missing header parameter' => 'Niepoprawny lub brakujący parametr w nagłówku żadania',
     'Not found' => 'Brak wyników',
     'Too many attempts' => 'Przekroczono ilość prób',
