@@ -3,17 +3,16 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
-use App\Models\Product;
 use Illuminate\Database\Seeder;
 
-class ProductSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
-     * run: php artisan db:seed --class=ProductSeeder
+     * run: php artisan db:seed --class=CategorySeeder
      * @return void
      */
     public function run(): void
     {
-        Product::factory()->count(100)->create();
+        Category::factory()->count(10)->create();
     }
 }

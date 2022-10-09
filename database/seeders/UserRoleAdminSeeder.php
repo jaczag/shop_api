@@ -9,8 +9,7 @@ use Illuminate\Database\Seeder;
 class UserRoleAdminSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
-     *
+     * run: php artisan db:seed --class=UserRoleAdminSeeder
      * @return void
      */
     public function run(): void
