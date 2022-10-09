@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -11,12 +12,11 @@ const ALLOWED_LANGUAGES = [
     'pl',
 ];
 
+/**
+ * @param Throwable $throwable
+ * @return void
+ */
 if (!function_exists('reportError')) {
-
-    /**
-     * @param Throwable $throwable
-     * @return void
-     */
     function reportError(Throwable $throwable): void
     {
         Log::error(
@@ -27,13 +27,11 @@ if (!function_exists('reportError')) {
     }
 }
 
-
+/**
+ * @param Request $request
+ * @return string
+ */
 if (!function_exists('getRequestLang')) {
-
-    /**
-     * @param Request $request
-     * @return string
-     */
     function getRequestLang(Request $request): string
     {
         $lang = 'en';
@@ -45,6 +43,18 @@ if (!function_exists('getRequestLang')) {
             }
         }
         return $lang;
+    }
+}
+
+/**
+ * convert timestamps to human readable dates
+ * @param Carbon|null $date
+ * @return string|null
+ */
+if (!function_exists('timestampToString')) {
+    function timestampToString(?Carbon $date): ?string
+    {
+        return $date?->toDateTimeString();
     }
 }
 
