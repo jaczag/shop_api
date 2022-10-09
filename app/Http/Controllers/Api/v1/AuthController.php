@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\v1\LoginRequest;
-use App\Http\Requests\v1\RegisterRequest;
+use App\Http\Requests\v1\auth\LoginRequest;
+use App\Http\Requests\v1\auth\RegisterRequest;
 use App\Http\Resources\v1\UserResource;
 use App\Services\UserService;
 use Exception;
@@ -75,7 +75,7 @@ class AuthController extends Controller
         }
 
         return $this->errorResponse(
-            __("Something went wrong.")
+            __('messages.Something went wrong.')
         );
     }
 

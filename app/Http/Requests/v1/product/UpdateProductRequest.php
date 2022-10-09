@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\v1;
+namespace App\Http\Requests\v1\product;
 
 use App\Enums\UserRoleEnum;
 use Illuminate\Foundation\Http\FormRequest;
@@ -14,10 +14,7 @@ class UpdateProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return (Auth::user() && in_array(
-                Auth::user()->role, [UserRoleEnum::Admin, UserRoleEnum::SuperAdmin]
-            )
-        );
+        return Auth::check();
     }
 
     /**

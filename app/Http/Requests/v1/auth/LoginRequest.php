@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Requests\v1;
+namespace App\Http\Requests\v1\auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 
 class LoginRequest extends FormRequest
 {
@@ -26,8 +25,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required_without:email'],
-            'email' => ['required_without:name'],
+            'email' => ['required'],
             'password' => ['required']
         ];
     }

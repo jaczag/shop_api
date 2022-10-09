@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\v1\StoreProductRequest;
-use App\Http\Requests\v1\UpdateProductRequest;
+use App\Http\Requests\v1\product\StoreProductRequest;
+use App\Http\Requests\v1\product\UpdateProductRequest;
 use App\Http\Resources\v1\ProductCollection;
 use App\Http\Resources\v1\ProductResource;
 use App\Models\Product;
@@ -23,8 +23,8 @@ class ProductsController extends Controller
      */
     public function index(Request $request): JsonResponse
     {
-        $products = Product::
-        with('category')
+        $products = Product::query()
+            ->with('category')
             ->when($filter = Arr::get($request, 'filter'), function (Builder $query) use ($filter) {
                 return $query
                     ->whereHas('category', function (Builder $query) use ($filter) {
@@ -51,8 +51,8 @@ class ProductsController extends Controller
         $data = $request->validated();
 
         try {
-            $service->assignData($data)->saveProduct();
-            return $this->successResponse();
+            $product = $service->assignData($data)->saveProduct()->getProduct();
+            return $this->successResponse(ProductResource::make($product));
         } catch (Exception $exception) {
             reportError($exception);
         }

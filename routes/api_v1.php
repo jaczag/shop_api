@@ -1,20 +1,9 @@
 <?php
 
 use App\Http\Controllers\Api\v1\AuthController;
+use App\Http\Controllers\Api\v1\CategoriesController;
 use App\Http\Controllers\Api\v1\ProductsController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
 
 Route::controller(AuthController::class)
     ->prefix('auth')
@@ -25,8 +14,16 @@ Route::controller(AuthController::class)
         Route::post('/logout', 'logout')->name('logout')->middleware('auth:sanctum');
     });
 
-Route::resource('products', ProductsController::class)->except(['create', 'edit', 'destroy']);
+// user
+Route::resource('products', ProductsController::class)->only(['index', 'show']);
+Route::resource('categories', CategoriesController::class)->only(['index', 'show']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// admin, super_admin
+Route::prefix('admin')
+    ->middleware(['auth:sanctum', 'admin'])
+    ->name('admin.')
+    ->group(function () {
+        Route::resource('products', ProductsController::class)->only(['store', 'update']);
+        Route::resource('categories', CategoriesController::class)->only(['store', 'update', 'delete']);
+    });
+

@@ -11,6 +11,7 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Exceptions\ThrottleRequestsException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+use Illuminate\Validation\UnauthorizedException;
 use Illuminate\Validation\ValidationException;
 use Psr\Log\LogLevel;
 use Symfony\Component\ErrorHandler\Error\FatalError;
@@ -57,7 +58,7 @@ class Handler extends ExceptionHandler
      * Register the exception handling callbacks for the application.
      *
      */
-    public function render($request, Throwable $e): Response|JsonResponse|\Symfony\Component\HttpFoundation\Response
+    public function render($request, Throwable $e): Response|JsonResponse|ResponseAlias
     {
         // If Model Not found (e.g: not existing user error)
         if ($e instanceof ModelNotFoundException) {
@@ -69,6 +70,10 @@ class Handler extends ExceptionHandler
         }
 
         // Handling the Unauthorized exception
+        if($e instanceof UnauthorizedException) {
+            return $this->errorResponse($e->getMessage(), ResponseAlias::HTTP_UNAUTHORIZED);
+        }
+
         if ($e instanceof AuthorizationException) {
             return $this->errorResponse($e->getMessage(), ResponseAlias::HTTP_FORBIDDEN);
         }
