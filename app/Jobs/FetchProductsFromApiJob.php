@@ -13,15 +13,24 @@ use Illuminate\Queue\SerializesModels;
 
 class FetchProductsFromApiJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
+
+    /**
+     * @var ApiProductsService
+     */
+    private ApiProductsService $service;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(public ApiProductsService $service)
+    public function __construct()
     {
+        $this->service = new ApiProductsService();
     }
 
     /**
