@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null description
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @method sum(string $string)
  */
 class Product extends Model
 {
