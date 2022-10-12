@@ -1,0 +1,975 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://shop-api.loc'
+paths:
+  /api/v1/auth/register:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 50 characters.'
+                  example: wpawqobfyfaukpdqegxziorkjvu
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must not be greater than 50 characters.'
+                  example: cttfdrvhjbdryd
+                password:
+                  type: string
+                  description: ''
+                  example: quibusdam
+                password_confirmation:
+                  type: string
+                  description: 'The value and <code>password</code> must match.'
+                  example: rerum
+              required:
+                - name
+                - email
+                - password
+                - password_confirmation
+      security: []
+  /api/v1/auth/login:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: ''
+                  example: et
+                password:
+                  type: string
+                  description: ''
+                  example: est
+              required:
+                - email
+                - password
+      security: []
+  /api/v1/auth/logout:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/products:
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: ok
+                  data:
+                    data:
+                      -
+                        id: 30
+                        external_id: 30
+                        title: 'Key Holder'
+                        price: 30
+                        category:
+                          id: 6
+                          name: home-decoration
+                          created_at: '2022-10-10 20:54:32'
+                          updated_at: '2022-10-10 20:54:32'
+                        is_active: 1
+                        description: 'Attractive DesignMetallic materialFour key hooksReliable & DurablePremium Quality'
+                        created_at: '2022-10-10 20:54:32'
+                        updated_at: '2022-10-10 20:54:32'
+                      -
+                        id: 29
+                        external_id: 29
+                        title: 'Handcraft Chinese style'
+                        price: 60
+                        category:
+                          id: 6
+                          name: home-decoration
+                          created_at: '2022-10-10 20:54:32'
+                          updated_at: '2022-10-10 20:54:32'
+                        is_active: 1
+                        description: 'Handcraft Chinese style art luxury palace hotel villa mansion home decor ceramic vase with brass fruit plate'
+                        created_at: '2022-10-10 20:54:32'
+                        updated_at: '2022-10-10 20:54:32'
+                      -
+                        id: 28
+                        external_id: 28
+                        title: '3D Embellishment Art Lamp'
+                        price: 20
+                        category:
+                          id: 6
+                          name: home-decoration
+                          created_at: '2022-10-10 20:54:32'
+                          updated_at: '2022-10-10 20:54:32'
+                        is_active: 1
+                        description: '3D led lamp sticker Wall sticker 3d wall art light on/off button  cell operated (included)'
+                        created_at: '2022-10-10 20:54:32'
+                        updated_at: '2022-10-10 20:54:32'
+                      -
+                        id: 27
+                        external_id: 27
+                        title: 'Flying Wooden Bird'
+                        price: 51
+                        category:
+                          id: 6
+                          name: home-decoration
+                          created_at: '2022-10-10 20:54:32'
+                          updated_at: '2022-10-10 20:54:32'
+                        is_active: 1
+                        description: 'Package Include 6 Birds with Adhesive Tape Shape: 3D Shaped Wooden Birds Material: Wooden MDF, Laminated 3.5mm'
+                        created_at: '2022-10-10 20:54:32'
+                        updated_at: '2022-10-10 20:54:32'
+                      -
+                        id: 26
+                        external_id: 26
+                        title: 'Plant Hanger For Home'
+                        price: 41
+                        category:
+                          id: 6
+                          name: home-decoration
+                          created_at: '2022-10-10 20:54:32'
+                          updated_at: '2022-10-10 20:54:32'
+                        is_active: 1
+                        description: 'Boho Decor Plant Hanger For Home Wall Decoration Macrame Wall Hanging Shelf'
+                        created_at: '2022-10-10 20:54:32'
+                        updated_at: '2022-10-10 20:54:32'
+                      -
+                        id: 25
+                        external_id: 25
+                        title: 'Gulab Powder 50 Gram'
+                        price: 70
+                        category:
+                          id: 5
+                          name: groceries
+                          created_at: '2022-10-10 20:54:32'
+                          updated_at: '2022-10-10 20:54:32'
+                        is_active: 1
+                        description: 'Dry Rose Flower Powder Gulab Powder 50 Gram • Treats Wounds'
+                        created_at: '2022-10-10 20:54:32'
+                        updated_at: '2022-10-10 20:54:32'
+                      -
+                        id: 24
+                        external_id: 24
+                        title: 'cereals muesli fruit nuts'
+                        price: 46
+                        category:
+                          id: 5
+                          name: groceries
+                          created_at: '2022-10-10 20:54:32'
+                          updated_at: '2022-10-10 20:54:32'
+                        is_active: 1
+                        description: 'original fauji cereal muesli 250gm box pack original fauji cereals muesli fruit nuts flakes breakfast cereal break fast faujicereals cerels cerel foji fouji'
+                        created_at: '2022-10-10 20:54:32'
+                        updated_at: '2022-10-10 20:54:32'
+                      -
+                        id: 23
+                        external_id: 23
+                        title: 'Orange Essence Food Flavou'
+                        price: 14
+                        category:
+                          id: 5
+                          name: groceries
+                          created_at: '2022-10-10 20:54:32'
+                          updated_at: '2022-10-10 20:54:32'
+                        is_active: 1
+                        description: 'Specifications of Orange Essence Food Flavour For Cakes and Baking Food Item'
+                        created_at: '2022-10-10 20:54:32'
+                        updated_at: '2022-10-10 20:54:32'
+                      -
+                        id: 22
+                        external_id: 22
+                        title: 'Elbow Macaroni - 400 gm'
+                        price: 14
+                        category:
+                          id: 5
+                          name: groceries
+                          created_at: '2022-10-10 20:54:32'
+                          updated_at: '2022-10-10 20:54:32'
+                        is_active: 1
+                        description: 'Product details of Bake Parlor Big Elbow Macaroni - 400 gm'
+                        created_at: '2022-10-10 20:54:32'
+                        updated_at: '2022-10-10 20:54:32'
+                      -
+                        id: 21
+                        external_id: 21
+                        title: '- Daal Masoor 500 grams'
+                        price: 20
+                        category:
+                          id: 5
+                          name: groceries
+                          created_at: '2022-10-10 20:54:32'
+                          updated_at: '2022-10-10 20:54:32'
+                        is_active: 1
+                        description: 'Fine quality Branded Product Keep in a cool and dry place'
+                        created_at: '2022-10-10 20:54:32'
+                        updated_at: '2022-10-10 20:54:32'
+                    pagination:
+                      total: 30
+                      count: 10
+                      per_page: 10
+                      current_page: 1
+                      total_pages: 3
+                  message: Success
+                  code: 200
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  data:
+                    type: object
+                    example:
+                      data:
+                        -
+                          id: 30
+                          external_id: 30
+                          title: 'Key Holder'
+                          price: 30
+                          category:
+                            id: 6
+                            name: home-decoration
+                            created_at: '2022-10-10 20:54:32'
+                            updated_at: '2022-10-10 20:54:32'
+                          is_active: 1
+                          description: 'Attractive DesignMetallic materialFour key hooksReliable & DurablePremium Quality'
+                          created_at: '2022-10-10 20:54:32'
+                          updated_at: '2022-10-10 20:54:32'
+                        -
+                          id: 29
+                          external_id: 29
+                          title: 'Handcraft Chinese style'
+                          price: 60
+                          category:
+                            id: 6
+                            name: home-decoration
+                            created_at: '2022-10-10 20:54:32'
+                            updated_at: '2022-10-10 20:54:32'
+                          is_active: 1
+                          description: 'Handcraft Chinese style art luxury palace hotel villa mansion home decor ceramic vase with brass fruit plate'
+                          created_at: '2022-10-10 20:54:32'
+                          updated_at: '2022-10-10 20:54:32'
+                        -
+                          id: 28
+                          external_id: 28
+                          title: '3D Embellishment Art Lamp'
+                          price: 20
+                          category:
+                            id: 6
+                            name: home-decoration
+                            created_at: '2022-10-10 20:54:32'
+                            updated_at: '2022-10-10 20:54:32'
+                          is_active: 1
+                          description: '3D led lamp sticker Wall sticker 3d wall art light on/off button  cell operated (included)'
+                          created_at: '2022-10-10 20:54:32'
+                          updated_at: '2022-10-10 20:54:32'
+                        -
+                          id: 27
+                          external_id: 27
+                          title: 'Flying Wooden Bird'
+                          price: 51
+                          category:
+                            id: 6
+                            name: home-decoration
+                            created_at: '2022-10-10 20:54:32'
+                            updated_at: '2022-10-10 20:54:32'
+                          is_active: 1
+                          description: 'Package Include 6 Birds with Adhesive Tape Shape: 3D Shaped Wooden Birds Material: Wooden MDF, Laminated 3.5mm'
+                          created_at: '2022-10-10 20:54:32'
+                          updated_at: '2022-10-10 20:54:32'
+                        -
+                          id: 26
+                          external_id: 26
+                          title: 'Plant Hanger For Home'
+                          price: 41
+                          category:
+                            id: 6
+                            name: home-decoration
+                            created_at: '2022-10-10 20:54:32'
+                            updated_at: '2022-10-10 20:54:32'
+                          is_active: 1
+                          description: 'Boho Decor Plant Hanger For Home Wall Decoration Macrame Wall Hanging Shelf'
+                          created_at: '2022-10-10 20:54:32'
+                          updated_at: '2022-10-10 20:54:32'
+                        -
+                          id: 25
+                          external_id: 25
+                          title: 'Gulab Powder 50 Gram'
+                          price: 70
+                          category:
+                            id: 5
+                            name: groceries
+                            created_at: '2022-10-10 20:54:32'
+                            updated_at: '2022-10-10 20:54:32'
+                          is_active: 1
+                          description: 'Dry Rose Flower Powder Gulab Powder 50 Gram • Treats Wounds'
+                          created_at: '2022-10-10 20:54:32'
+                          updated_at: '2022-10-10 20:54:32'
+                        -
+                          id: 24
+                          external_id: 24
+                          title: 'cereals muesli fruit nuts'
+                          price: 46
+                          category:
+                            id: 5
+                            name: groceries
+                            created_at: '2022-10-10 20:54:32'
+                            updated_at: '2022-10-10 20:54:32'
+                          is_active: 1
+                          description: 'original fauji cereal muesli 250gm box pack original fauji cereals muesli fruit nuts flakes breakfast cereal break fast faujicereals cerels cerel foji fouji'
+                          created_at: '2022-10-10 20:54:32'
+                          updated_at: '2022-10-10 20:54:32'
+                        -
+                          id: 23
+                          external_id: 23
+                          title: 'Orange Essence Food Flavou'
+                          price: 14
+                          category:
+                            id: 5
+                            name: groceries
+                            created_at: '2022-10-10 20:54:32'
+                            updated_at: '2022-10-10 20:54:32'
+                          is_active: 1
+                          description: 'Specifications of Orange Essence Food Flavour For Cakes and Baking Food Item'
+                          created_at: '2022-10-10 20:54:32'
+                          updated_at: '2022-10-10 20:54:32'
+                        -
+                          id: 22
+                          external_id: 22
+                          title: 'Elbow Macaroni - 400 gm'
+                          price: 14
+                          category:
+                            id: 5
+                            name: groceries
+                            created_at: '2022-10-10 20:54:32'
+                            updated_at: '2022-10-10 20:54:32'
+                          is_active: 1
+                          description: 'Product details of Bake Parlor Big Elbow Macaroni - 400 gm'
+                          created_at: '2022-10-10 20:54:32'
+                          updated_at: '2022-10-10 20:54:32'
+                        -
+                          id: 21
+                          external_id: 21
+                          title: '- Daal Masoor 500 grams'
+                          price: 20
+                          category:
+                            id: 5
+                            name: groceries
+                            created_at: '2022-10-10 20:54:32'
+                            updated_at: '2022-10-10 20:54:32'
+                          is_active: 1
+                          description: 'Fine quality Branded Product Keep in a cool and dry place'
+                          created_at: '2022-10-10 20:54:32'
+                          updated_at: '2022-10-10 20:54:32'
+                      pagination:
+                        total: 30
+                        count: 10
+                        per_page: 10
+                        current_page: 1
+                        total_pages: 3
+                  message:
+                    type: string
+                    example: Success
+                  code:
+                    type: integer
+                    example: 200
+      tags:
+        - Endpoints
+      security: []
+  '/api/v1/products/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: ok
+                  data:
+                    id: 1
+                    external_id: 1
+                    title: 'iPhone 9'
+                    price: 549
+                    category:
+                      id: 1
+                      name: smartphones
+                      created_at: '2022-10-10 20:52:01'
+                      updated_at: '2022-10-10 20:52:01'
+                    is_active: 1
+                    description: 'An apple mobile which is nothing like apple'
+                    created_at: '2022-10-10 20:52:01'
+                    updated_at: '2022-10-10 20:52:01'
+                  message: Success
+                  code: 200
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      external_id: 1
+                      title: 'iPhone 9'
+                      price: 549
+                      category:
+                        id: 1
+                        name: smartphones
+                        created_at: '2022-10-10 20:52:01'
+                        updated_at: '2022-10-10 20:52:01'
+                      is_active: 1
+                      description: 'An apple mobile which is nothing like apple'
+                      created_at: '2022-10-10 20:52:01'
+                      updated_at: '2022-10-10 20:52:01'
+                  message:
+                    type: string
+                    example: Success
+                  code:
+                    type: integer
+                    example: 200
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the product.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/v1/categories:
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: ok
+                  data:
+                    data:
+                      -
+                        id: 6
+                        name: home-decoration
+                        created_at: '2022-10-10 20:54:32'
+                        updated_at: '2022-10-10 20:54:32'
+                      -
+                        id: 5
+                        name: groceries
+                        created_at: '2022-10-10 20:54:32'
+                        updated_at: '2022-10-10 20:54:32'
+                      -
+                        id: 4
+                        name: skincare
+                        created_at: '2022-10-10 20:52:40'
+                        updated_at: '2022-10-10 20:52:40'
+                      -
+                        id: 3
+                        name: fragrances
+                        created_at: '2022-10-10 20:52:40'
+                        updated_at: '2022-10-10 20:52:40'
+                      -
+                        id: 2
+                        name: laptops
+                        created_at: '2022-10-10 20:52:01'
+                        updated_at: '2022-10-10 20:52:01'
+                      -
+                        id: 1
+                        name: smartphones
+                        created_at: '2022-10-10 20:52:01'
+                        updated_at: '2022-10-10 20:52:01'
+                    pagination:
+                      total: 6
+                      count: 6
+                      per_page: 10
+                      current_page: 1
+                      total_pages: 1
+                  message: Success
+                  code: 200
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  data:
+                    type: object
+                    example:
+                      data:
+                        -
+                          id: 6
+                          name: home-decoration
+                          created_at: '2022-10-10 20:54:32'
+                          updated_at: '2022-10-10 20:54:32'
+                        -
+                          id: 5
+                          name: groceries
+                          created_at: '2022-10-10 20:54:32'
+                          updated_at: '2022-10-10 20:54:32'
+                        -
+                          id: 4
+                          name: skincare
+                          created_at: '2022-10-10 20:52:40'
+                          updated_at: '2022-10-10 20:52:40'
+                        -
+                          id: 3
+                          name: fragrances
+                          created_at: '2022-10-10 20:52:40'
+                          updated_at: '2022-10-10 20:52:40'
+                        -
+                          id: 2
+                          name: laptops
+                          created_at: '2022-10-10 20:52:01'
+                          updated_at: '2022-10-10 20:52:01'
+                        -
+                          id: 1
+                          name: smartphones
+                          created_at: '2022-10-10 20:52:01'
+                          updated_at: '2022-10-10 20:52:01'
+                      pagination:
+                        total: 6
+                        count: 6
+                        per_page: 10
+                        current_page: 1
+                        total_pages: 1
+                  message:
+                    type: string
+                    example: Success
+                  code:
+                    type: integer
+                    example: 200
+      tags:
+        - Endpoints
+      security: []
+  '/api/v1/categories/{id}':
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: ok
+                  data:
+                    id: 1
+                    name: smartphones
+                    created_at: '2022-10-10 20:52:01'
+                    updated_at: '2022-10-10 20:52:01'
+                  message: Success
+                  code: 200
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      name: smartphones
+                      created_at: '2022-10-10 20:52:01'
+                      updated_at: '2022-10-10 20:52:01'
+                  message:
+                    type: string
+                    example: Success
+                  code:
+                    type: integer
+                    example: 200
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the category.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/v1/cart:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: ''
+                  example: 11
+                cart_token:
+                  type: string
+                  description: ''
+                  example: sunt
+                products_ids:
+                  type: array
+                  description: ''
+                  example:
+                    - 16
+                  items:
+                    type: integer
+      security: []
+  /api/v1/admin/products:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must be at least 3 characters. Must not be greater than 50 characters.'
+                  example: qjgqhqekncuegqqcvlcidxfq
+                price:
+                  type: number
+                  description: 'Must be between 0.01 and 9999999.99.'
+                  example: 0
+                category_id:
+                  type: string
+                  description: ''
+                  example: omnis
+                is_active:
+                  type: boolean
+                  description: 'Must be one of <code>0</code> or <code>1</code>.'
+                  example: '1'
+                description:
+                  type: string
+                  description: 'Must not be greater than 400 characters.'
+                  example: lrmpjhvbjbyddnvzsxbvzohdblevzrfuxo
+              required:
+                - title
+                - price
+                - category_id
+      security: []
+  '/api/v1/admin/products/{id}':
+    put:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must be at least 3 characters. Must not be greater than 50 characters.'
+                  example: ztdttnbdpeyvqvvkjwoseclv
+                price:
+                  type: number
+                  description: 'Must be between 0.01 and 9999999.99.'
+                  example: 1
+                category_id:
+                  type: string
+                  description: ''
+                  example: null
+                is_active:
+                  type: boolean
+                  description: 'Must be one of <code>0</code> or <code>1</code>.'
+                  example: '0'
+                description:
+                  type: string
+                  description: 'Must not be greater than 400 characters.'
+                  example: oxylyornlgoyhjxrqcexwunvuvqjsiaueecjxeiepagpcqzxdgtmoqbqqlpziehbcwjrgjdvyaecnhrmkvfvikclqtwmuszpnoghylrgqcwglwricrtrevncwrsnfqcfcmmjauzjqerzftfkarbciiocxtmawpvxchwedhmlvyykfwpnlsfbrjagxaxfoccoelmrcmwtjqjioobjjvayukktfrdtmeohpwlykzdjhagehufgschpdfidlqhmgouuloifbbefbt
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the product.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/v1/admin/categories:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be at least 3 characters. Must not be greater than 50 characters.'
+                  example: cqbzbmzhsvgxrzaqzxfczvtupar
+              required:
+                - name
+      security: []
+  '/api/v1/admin/categories/{id}':
+    put:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be at least 3 characters. Must not be greater than 50 characters.'
+                  example: ryutkbuffbtwsvwuojdntlmbsqkmkeyaihkyzacjbyjgmgh
+              required:
+                - name
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the category.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Endpoints
+    description: ''
