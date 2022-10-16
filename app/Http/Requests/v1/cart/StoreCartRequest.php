@@ -3,19 +3,10 @@
 namespace App\Http\Requests\v1\cart;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class StoreCartRequest extends FormRequest
 {
-    /**
-     * @return bool
-     */
-    public function authorize(): bool
-    {
-        return Auth::guest();
-    }
-
     /**
      * @return void
      */

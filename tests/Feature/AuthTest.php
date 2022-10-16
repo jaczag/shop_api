@@ -9,6 +9,7 @@ use Tests\TestCase;
 class AuthTest extends TestCase
 {
     use RefreshDatabase;
+    private User $user;
 
     /**
      * @return void

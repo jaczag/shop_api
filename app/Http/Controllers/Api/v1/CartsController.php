@@ -4,12 +4,10 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\v1\cart\StoreCartRequest;
-use App\Http\Requests\v1\category\StoreCategoryRequest;
 use App\Http\Resources\v1\CartResource;
 use App\Services\CartService;
 use Exception;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
 class CartsController extends Controller

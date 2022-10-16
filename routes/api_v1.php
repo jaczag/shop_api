@@ -18,7 +18,7 @@ Route::controller(AuthController::class)
 // user
 Route::resource('products', ProductsController::class)->only(['index', 'show']);
 Route::resource('categories', CategoriesController::class)->only(['index', 'show']);
-Route::post('cart', [CartsController::class, 'store'])->name('cart.store');
+Route::post('cart', [CartsController::class, 'store'])->name('cart.store')->middleware('optionalAuth');
 
 // admin, super_admin
 Route::prefix('admin')

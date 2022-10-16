@@ -34,7 +34,7 @@ class CategoriesController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\v1\category\StoreCategoryRequest $request
+     * @param StoreCategoryRequest $request
      * @param CategoryService $service
      * @return JsonResponse
      */
