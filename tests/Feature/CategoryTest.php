@@ -112,8 +112,8 @@ class CategoryTest extends TestCase
                 'data' => [
                     'id' => $category->id,
                     'name' => 'exampleName',
-                    'created_at' => $category->created_at,
-                    'updated_at' => $category->updated_at,
+                    'created_at' => timestampToString($category->created_at),
+                    'updated_at' => timestampToString($category->updated_at),
                 ],
                 'message' => "Success",
                 'code' => 200
@@ -204,7 +204,7 @@ class CategoryTest extends TestCase
         $response = $this->actingAs($this->admin)
             ->putJson(
                 route('admin.categories.update', [
-                        'category' => 999999999999999999999999999999999999999999999999,
+                        'category' => 0,
                         'name' => 'example'
                     ]
                 )
@@ -218,4 +218,75 @@ class CategoryTest extends TestCase
                 ]
             );
     }
+
+    /**
+     * @return void
+     */
+    public function test_admin_delete_category(): void
+    {
+        $category = $this->categories->first();
+        $response = $this->actingAs($this->admin)
+            ->deleteJson(
+                route('admin.categories.destroy', [
+                        'category' => $category->id,
+                    ]
+                )
+            );
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'status' => 'ok',
+                'data' => null,
+                'message' => "Success",
+                'code' => 200
+            ]);
+    }
+
+    /**
+     * @return void
+     */
+    public function test_user_role_user_cannot_delete_category(): void
+    {
+        $category = $this->categories->first();
+        $user = User::factory([
+            'role' => UserRoleEnum::User->value
+        ])->create();
+
+        $response = $this->actingAs($user)
+            ->deleteJson(
+                route('admin.categories.destroy', [
+                        'category' => $category->id,
+                    ]
+                )
+            );
+
+        $response->assertStatus(401)
+            ->assertJson([
+                'status' => 'error',
+                'message' => "This action is unauthorized",
+                'code' => 401
+            ]);
+    }
+
+    /**
+     * @return void
+     */
+    public function test_guest_cannot_delete_category(): void
+    {
+        $category = $this->categories->first();
+        $response = $this->deleteJson(
+            route('admin.categories.destroy', [
+                    'category' => $category->id,
+                ]
+            )
+        );
+
+        $response->assertStatus(401)
+            ->assertJson([
+                'status' => 'error',
+                'message' => "Unauthenticated.",
+                'code' => 401
+            ]);
+    }
+
 }

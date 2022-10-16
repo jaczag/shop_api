@@ -26,6 +26,6 @@ Route::prefix('admin')
     ->name('admin.')
     ->group(function () {
         Route::resource('products', ProductsController::class)->only(['store', 'update']);
-        Route::resource('categories', CategoriesController::class)->only(['store', 'update', 'delete']);
+        Route::resource('categories', CategoriesController::class)->only(['store', 'update', 'destroy']);
     });
 
